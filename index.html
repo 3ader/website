@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fullscreen Video</title>
+    <style>
+        * { margin: 0; padding: 0; overflow: hidden; }
+        html, body { height: 100%; background: black; }
+        video { width: 100vw; height: 100vh; object-fit: cover; position: absolute; top: 0; left: 0; }
+    </style>
+</head>
+<body>
+    <video id="myVideo" playsinline>
+        <source src="https://archive.org/download/kiss_idk/356.0-386.0.mp4" type="video/mp4">
+    </video>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const video = document.getElementById("myVideo");
+
+            // Listen for user click to start video with sound
+            document.body.addEventListener("click", () => {
+                video.play().catch((err) => {
+                    console.log("Autoplay failed: ", err);
+                });
+            });
+
+            // Redirect to another URL when video ends
+            video.addEventListener("ended", () => {
+                window.location.href = "https://discord.gg/3TfA4UAqQY";
+            });
+        });
+    </script>
+</body>
+</html>
